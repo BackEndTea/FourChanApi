@@ -1,0 +1,34 @@
+{
+    "name": "backendtea/fourchanapi",
+    "description": "A php wrapper for the 4chan api",
+    "keywords": [
+        "4chan",
+        "api"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BackEndTea",
+            "email": "gertp93@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "mockery/mockery": "^0.9.9"
+    },
+    "autoload": {
+      "psr-4": {
+        "FourChan\\": "src/"
+      }
+    },
+    "autoload-dev": {
+        "psr-4": {
+        "FourChan\\Test\\": "test/"
+        }
+    }
+
+}
