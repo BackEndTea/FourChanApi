@@ -36,26 +36,6 @@ $ make test
 
 to run all the tests.
 
-## Fixing Code Style issues
-
-Run
-
-```
-$ make cs
-```
-
-to detect and automatically fix code style issues.
-
-## Extra lazy?
-
-Run
-
-```
-$ make
-```
-
-to run both all the tests and to automatically fix code style issues. 
-
 ## Credit
 
 This [CONTRIBUTING.md](CONTRIBUTING.md) format was graciously lifted from The PHP League's [example](https://github.com/thephpleague/skeleton/blob/master/CONTRIBUTING.md). Thanks!

@@ -8,4 +8,8 @@ Please see https://github.com/4chan/4chan-API for usage rules.
 
 This wrapper is still in development and currently not ready for use, if you wish to contribute check out [the contributing guide](CONTRIBUTING.md)
 
-Todo: Add explanation on working
+Todo: 
+
+* Actually build it
+* Find 5.6 compatible code sniffer
+* Add explanation to Readme
