@@ -45,17 +45,13 @@ trait RequestTrait
      *
      * @param string $method Method type
      * @param string $uri uri
-     * @param bool $decodeJson whether or not to decode the json, default is true.
      * @return string|array
      */
-    protected function makeRequest($method, $uri, $decodeJson = true)
+    protected function makeRequest($method, $uri)
     {
         $response = $this->getClient()->request($method, $uri);
         $body = (string) $response->getBody();
 
-        if ($decodeJson) {
-            return \GuzzleHttp\json_decode($body, true);
-        }
-        return $body;
+        return \GuzzleHttp\json_decode($body, true);
     }
 }
