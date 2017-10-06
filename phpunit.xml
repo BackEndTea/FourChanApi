@@ -15,6 +15,11 @@
     <php>
         <const name="BASE_PATH" value="."/>
     </php>
+    <filter>
+        <whitelist>
+            <directory>src</directory>
+        </whitelist>
+    </filter>
     <testsuites>
         <testsuite name="all">
             <directory>test</directory>
