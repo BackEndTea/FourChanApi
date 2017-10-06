@@ -16,6 +16,9 @@ trait RequestTrait
     /** @var string  */
     protected $baseImageUrl;
 
+    /** @var  bool */
+    protected $useSSL;
+
     /**
      * Creates the Client object to work with.
      *

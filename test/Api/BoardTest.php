@@ -3,7 +3,13 @@
 namespace FourChan\Test\Api;
 
 use FourChan\Api\Board;
+use FourChan\Api\Thread;
+use Mockery as m;
 
+/**
+ * @runTestsInSeparateProcesses
+ * @preserveGlobalState disabled
+ */
 class BoardTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -60,7 +66,21 @@ class BoardTest extends \PHPUnit_Framework_TestCase
     public function getFullBoardNameReturnsFullName()
     {
         $board = new Board('v');
+        $board->getThreads();
         $board->setBoardInfo(['title' => 'anime and manga']);
         $this->assertEquals('anime and manga', $board->getTitle());
+    }
+
+    /**
+     * @test
+     */
+    public function getThreadsReturnsThreads()
+    {
+        $client = m::mock('overload:\GuzzleHttp\Client');
+        $client->shouldReceive('request')->andReturn($client);
+        $client->shouldReceive('getBody')->andReturn(file_get_contents('./test/threads_response.json'));
+        $board = new Board('tg');
+        $list = $board->getThreads();
+        $this->assertInstanceOf(Thread::class, $list[0]);
     }
 }

@@ -5,18 +5,12 @@ namespace FourChan\Api;
 use FourChan\Util\BoardFactory;
 use FourChan\Util\RequestTrait;
 
-/**
- * Class FourChan
- * @package FourChan\Api
- */
 class FourChan
 {
     use RequestTrait;
 
     /** @var  Board */
     private $board;
-    /** @var  bool */
-    protected $useSSL;
 
     public function __construct($useSSL = true)
     {
@@ -57,7 +51,7 @@ class FourChan
      */
     public function getBoards()
     {
-        $response =  $this->makeRequest('GET', 'boards.json');
+        $response = $this->makeRequest('GET', 'boards.json');
         $boardFactory = new BoardFactory($response, $this->useSSL);
         return $boardFactory->getBoardList();
     }

@@ -4,13 +4,8 @@ namespace FourChan\Api;
 
 use FourChan\Util\NotSetException;
 use FourChan\Util\RequestTrait;
+use FourChan\Util\ThreadFactory;
 
-/**
- * Class Board
- *
- *
- * @package FourChan\Api
- */
 class Board
 {
     use RequestTrait;
@@ -72,5 +67,12 @@ class Board
             throw new NotSetException('Board info was not set.');
         }
         return $this->boardInfo['title'];
+    }
+
+    public function getThreads()
+    {
+        $response = $this->makeRequest('GET', 'threads.json');
+        $factory = new ThreadFactory($response, $this->useSSL);
+        return $factory->getThreads();
     }
 }
