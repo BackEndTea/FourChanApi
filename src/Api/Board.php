@@ -19,7 +19,7 @@ class Board
     /** @var  array|string[] $boardInfo */
     private $boardInfo;
 
-    public function __construct($boardName, $useSSL= true)
+    public function __construct($boardName, $useSSL = true)
     {
         $this->boardName = $boardName;
         $base = $useSSL ? 'https://a.4cdn.org/' : 'http://a.4cdn.org/';

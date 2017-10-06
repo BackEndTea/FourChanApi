@@ -32,7 +32,7 @@ class FourChanTest extends \PHPUnit_Framework_TestCase
     {
         $client = m::mock('overload:\GuzzleHttp\Client');
         $client->shouldReceive('request')->andReturn($client);
-        $client->shouldReceive('getBody')->andReturn(file_get_contents( getcwd(). '\test\response.json'));
+        $client->shouldReceive('getBody')->andReturn(file_get_contents('./test/response.json'));
         $fourChan = new FourChan();
         $list = $fourChan->getBoards();
         $this->assertInstanceOf(Board::class, $list[0]);

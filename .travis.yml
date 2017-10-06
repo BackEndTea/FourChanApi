@@ -5,9 +5,30 @@ php:
   - '7.0'
   - '7.1'
 
+env:
+  global:
+    - CC_TEST_REPORTER_ID=b0394eecce3b4eac10e91151a9e2c1a453982518d665d07b533ca99084f2456d
+
+before_install:
+  - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then COLLECT_COVERAGE=true; else COLLECT_COVERAGE=false; fi
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+  - composer self-update
+  - composer validate --no-check-publish
+
+# cache composer downloads so installing is quicker
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - $HOME/.php-cs-fixer
+
 install:
-    - composer install --prefer-dist -o
+  - composer install --prefer-dist -o
 
 script:
-    - ./vendor/bin/phpunit -v
-    - ./vendor/bin/php-cs-fixer fix --verbose --diff
+  - vendor/bin/php-cs-fixer fix --verbose --diff --dry-run
+  - if [[ "$COLLECT_COVERAGE" == "true" ]]; then vendor/bin/phpunit --coverage-clover build/logs/clover.xml; else vendor/bin/phpunit; fi
+
+after_success:
+  - if [[ "$COLLECT_COVERAGE" == "true" ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi

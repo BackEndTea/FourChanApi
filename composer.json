@@ -18,16 +18,17 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
-        "mockery/mockery": "^0.9.9"
+        "mockery/mockery": "^0.9.9",
+        "friendsofphp/php-cs-fixer": "^2.7"
     },
     "autoload": {
-      "psr-4": {
-        "FourChan\\": "src/"
-      }
+        "psr-4": {
+            "FourChan\\": "src/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
-        "FourChan\\Test\\": "test/"
+            "FourChan\\Test\\": "test/"
         }
     }
 
