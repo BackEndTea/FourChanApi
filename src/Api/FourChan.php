@@ -13,7 +13,6 @@ class FourChan
 {
     use RequestTrait;
 
-
     /** @var  Board */
     private $board;
     /** @var  bool */

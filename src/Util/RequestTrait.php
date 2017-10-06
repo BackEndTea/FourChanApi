@@ -12,6 +12,7 @@ trait RequestTrait
 
     /** @var string  */
     protected $baseUrl;
+
     /** @var string  */
     protected $baseImageUrl;
 
