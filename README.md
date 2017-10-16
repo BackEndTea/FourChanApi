@@ -13,10 +13,9 @@ Please see https://github.com/4chan/4chan-API for usage rules.
 
 To get a list off all the Thread #'s of /v/
 ````php
-use FourChan\Api\FourChan;
+use FourChan\FourChan;
 
-$fourChan = new FourChan();
-$fourChan->setBoard('v')->getThreads();
+FourChan::board('v')->getThreads();
 ````
 
 ## Development
