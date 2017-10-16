@@ -16,14 +16,7 @@ class ThreadFactory
      */
     public function __construct($threads, $useSSL = true)
     {
-        $threadList = [];
-        foreach ($threads as $thread) {
-            foreach ($thread['threads'] as $realThread) {
-                $inList = new Thread($realThread['no']);
-                array_push($threadList, $inList);
-            }
-        }
-        $this->threadList = $threadList;
+        $this->threadList = $this->flattenThreads($threads);
     }
 
     /**
@@ -32,5 +25,21 @@ class ThreadFactory
     public function getThreads()
     {
         return $this->threadList;
+    }
+
+    /**
+     * Flattens thread structure and instantiates threads
+     * @return array|Thread[]
+     */
+    protected function flattenThreads($threads)
+    {
+        $threadList = [];
+        foreach ($threads as $thread) {
+            foreach ($thread['threads'] as $realThread) {
+                $inList = new Thread($realThread['no']);
+                array_push($threadList, $inList);
+            }
+        }
+        return $threadList;
     }
 }

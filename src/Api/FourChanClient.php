@@ -5,7 +5,7 @@ namespace FourChan\Api;
 use FourChan\Util\BoardFactory;
 use FourChan\Util\RequestTrait;
 
-class FourChan
+class FourChanClient
 {
     use RequestTrait;
 
