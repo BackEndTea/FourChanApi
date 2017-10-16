@@ -18,6 +18,8 @@ class FourChan
 
     /**
      * Get client instance
+     * @param $useSSL true for https, false for http
+     * @return FourChanClient
      */
     protected static function client($useSSL)
     {

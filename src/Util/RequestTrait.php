@@ -47,7 +47,7 @@ trait RequestTrait
      * @param string $uri uri
      * @return string|array
      */
-    protected function makeRequest($method, $uri)
+    protected function makeRequest($method, $uri = '')
     {
         $response = $this->getClient()->request($method, $uri);
         $body = (string) $response->getBody();
