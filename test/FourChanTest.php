@@ -18,11 +18,13 @@ class FourChanTest extends \PHPUnit_Framework_TestCase
         m::close();
     }
 
-
+    /**
+     * @test
+     */
     public function testBoard()
     {
         $board = FourChan::board('v');
         $this->assertInstanceOf(Board::class, $board);
-        $this->assertEquals('v', $board->getBoardName());
+        $this->assertSame('v', $board->getBoardName());
     }
 }
