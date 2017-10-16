@@ -10,7 +10,7 @@ use FourChan\Api\FourChanClient;
  */
 class FourChan
 {
-    public static function board(string $board, $useSSL = true)
+    public static function board($board, $useSSL = true)
     {
         $client = self::client($useSSL);
         return $client->setBoard($board);
@@ -19,7 +19,7 @@ class FourChan
     /**
      * Get client instance
      */
-    protected static function client(bool $useSSL)
+    protected static function client($useSSL)
     {
         return new FourChanClient($useSSL);
     }
