@@ -7,22 +7,30 @@ use GuzzleHttp\Client;
 trait RequestTrait
 {
 
-    /** @var  Client */
+    /**
+     * @var Client
+     */
     private $client;
 
-    /** @var string  */
+    /**
+     * @var string
+     */
     protected $baseUrl;
 
-    /** @var string  */
+    /**
+     * @var string
+     */
     protected $baseImageUrl;
 
-    /** @var  bool */
+    /**
+     * @var bool
+     */
     protected $useSSL;
 
     /**
      * Creates the Client object to work with.
      *
-     * @param $baseUrl string
+     * @param string $baseUrl
      * @internal
      */
     protected function setClient($baseUrl)
@@ -32,6 +40,8 @@ trait RequestTrait
     }
 
     /**
+     * Get a client instance
+     *
      * @return Client
      * @internal
      */

@@ -7,6 +7,7 @@ use FourChan\Util\RequestTrait;
 class Thread
 {
     use RequestTrait;
+
     /**
      * @var string Number of the OP of the thread as in the url
      */
@@ -24,9 +25,11 @@ class Thread
 
     /**
      * Thread constructor.
+     *
      * @param string $threadNo # of OP
      * @param $board
      * @param bool $useSSL
+     * @return void
      */
     public function __construct($threadNo, $board, $useSSL = true)
     {
@@ -65,6 +68,7 @@ class Thread
      *
      * @internal
      * @param $posts
+     * @return void
      */
     public function setPosts($posts)
     {
