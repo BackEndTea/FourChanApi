@@ -18,16 +18,22 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         m::close();
     }
 
-
+    /**
+     * @test
+     */
     public function testSetAndGetBoard()
     {
         $client = new FourChanClient();
         $board = $client->setBoard('v');
 
         $this->assertInstanceOf(Board::class, $board);
-        $this->assertEquals('v', $board->getBoardName());
+        $this->assertSame('v', $board->getBoardName());
+        $this->assertSame($board, $client->getBoard());
     }
 
+    /**
+     * @test
+     */
     public function testGetBoards()
     {
         $client = m::mock('overload:\GuzzleHttp\Client');

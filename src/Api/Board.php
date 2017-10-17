@@ -20,6 +20,7 @@ class Board
         $this->boardName = $boardName;
         $base = $useSSL ? 'https://a.4cdn.org/' : 'http://a.4cdn.org/';
         $baseUri = $base . $boardName . '/';
+        $this->useSSL = $useSSL;
         $this->setClient($baseUri);
     }
 
@@ -72,7 +73,7 @@ class Board
     public function getThreads()
     {
         $response = $this->makeRequest('GET', 'threads.json');
-        $factory = new ThreadFactory($response, $this->useSSL);
+        $factory = new ThreadFactory($response, $this->boardName, $this->useSSL);
         return $factory->getThreads();
     }
 }

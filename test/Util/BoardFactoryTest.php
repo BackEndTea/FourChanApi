@@ -7,6 +7,9 @@ use FourChan\Util\BoardFactory;
 
 class BoardFactoryTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @test
+     */
     public function testFactory()
     {
         $response = \GuzzleHttp\json_decode(file_get_contents('./test/boards_response.json'), true);

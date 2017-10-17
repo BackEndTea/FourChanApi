@@ -36,9 +36,9 @@ class BoardTest extends \PHPUnit_Framework_TestCase
             ]
         );
         $info = $board->getBoardInfo();
-        $this->assertEquals('v', $info['title']);
-        $this->assertEquals(15, $info['per_page']);
-        $this->assertEquals(10, $info['pages']);
+        $this->assertSame('v', $info['title']);
+        $this->assertSame(15, $info['per_page']);
+        $this->assertSame(10, $info['pages']);
     }
 
     /**
@@ -47,7 +47,7 @@ class BoardTest extends \PHPUnit_Framework_TestCase
     public function getBoardNameGetsName()
     {
         $board = new Board('v');
-        $this->assertEquals('v', $board->getBoardName());
+        $this->assertSame('v', $board->getBoardName());
     }
 
     /**
@@ -68,7 +68,7 @@ class BoardTest extends \PHPUnit_Framework_TestCase
         $board = new Board('v');
         $board->getThreads();
         $board->setBoardInfo(['title' => 'anime and manga']);
-        $this->assertEquals('anime and manga', $board->getTitle());
+        $this->assertSame('anime and manga', $board->getTitle());
     }
 
     /**

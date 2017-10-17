@@ -26,7 +26,6 @@ Todo's:
 
 * Get threads per page
 * Get catalog (thread + replies show on indexes)
-* Thread info
 * Post info
 * Get Archived threads
 * Get all posts in a specific thread
