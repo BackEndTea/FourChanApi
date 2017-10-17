@@ -12,13 +12,17 @@ use FourChan\Api\Board;
  */
 class BoardFactory
 {
-    /** @var array|Board[]  */
-    private $boardsList;
+    /**
+     * @var array|Board[]
+     */
+    protected $boardsList;
 
     /**
      * BoardFactory constructor.
+     *
      * @param array $boards array of board info as retrieved from API
      * @param bool $useSSL True for Https, false for Http
+     * @return void
      */
     public function __construct($boards, $useSSL = true)
     {
@@ -33,6 +37,8 @@ class BoardFactory
     }
 
     /**
+     * Get list of boards
+     *
      * @return array|Board[]
      * @internal
      */

@@ -6,14 +6,18 @@ use FourChan\Api\Thread;
 
 class ThreadFactory
 {
-    /** @var array|Thread[] */
+    /**
+     * @var array|Thread[]
+     */
     private $threadList;
 
     /**
      * ThreadFactory constructor.
+     *
      * @param array $threads array of threads as retrieved from API
      * @param $board
      * @param bool $useSSL True for Https, false for Http
+     * @return void
      */
     public function __construct($threads, $board, $useSSL = true)
     {
@@ -21,6 +25,8 @@ class ThreadFactory
     }
 
     /**
+     * Get all the threads!
+     *
      * @return array|Thread[]
      */
     public function getThreads()
@@ -30,6 +36,7 @@ class ThreadFactory
 
     /**
      * Flattens thread structure and instantiates threads
+     *
      * @param $threads
      * @param $board
      * @param $useSSL
