@@ -54,7 +54,7 @@ class Thread
         $postList = [];
         $posts = $this->makeRequest('GET');
         foreach ($posts['posts'] as $post) {
-            array_push($postList, new Post($post));
+            array_push($postList, new Post($post, $this->board, $this->useSSL));
         }
         return $postList;
     }

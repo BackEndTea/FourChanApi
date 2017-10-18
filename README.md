@@ -11,12 +11,18 @@ Please see https://github.com/4chan/4chan-API for usage rules.
 
 ## Usage
 
-To get a list off all the Thread #'s of /v/
+Get a list off all the Thread #'s of /v/
 ````php
 use FourChan\FourChan;
 
 FourChan::board('v')->getThreads();
 ````
+
+Get the image of the first thread OP on /a/
+
+```php
+FourChan::board('v')->getThreads()[0]->getPosts()[0]->getImageUrl();
+```
 
 ## Development
 
@@ -26,11 +32,12 @@ Todo's:
 
 * Get threads per page
 * Get catalog (thread + replies show on indexes)
-* Post info
 * Get Archived threads
-* Get all posts in a specific thread
-* Get images from an OP/post
 * Get thumbnails from an OP/post
+
+## Note
+
+All of fake responses have been grabbed from live threads on 4chan, they do not necessarily represent my viewws, or of anyone who has worked on this project.
 
 
 
