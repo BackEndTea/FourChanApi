@@ -10,6 +10,13 @@ use FourChan\Api\FourChanClient;
  */
 class FourChan
 {
+    /**
+     * Gets a Board object
+     *
+     * @param string $board board name as found in the url
+     * @param bool $useSSL true for https, false for http
+     * @return \FourChan\Api\Board
+     */
     public static function board($board, $useSSL = true)
     {
         $client = self::client($useSSL);
@@ -18,6 +25,7 @@ class FourChan
 
     /**
      * Get client instance
+     *
      * @param $useSSL true for https, false for http
      * @return FourChanClient
      */

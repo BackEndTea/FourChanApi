@@ -7,7 +7,7 @@ use FourChan\Util\NoImageException;
 class Post
 {
     /**
-     * @var  array Info of the post
+     * @var array Info of the post
      */
     private $postInfo;
 
@@ -16,6 +16,13 @@ class Post
      */
     private $baseImageUrl;
 
+    /**
+     * Post constructor
+     *
+     * @param array $postInfo Info of the post as retrieved from the API
+     * @param string $board board name as found in the url
+     * @param bool $useSSL true for https, false for http
+     */
     public function __construct($postInfo, $board, $useSSL = true)
     {
         $this->postInfo = $postInfo;
