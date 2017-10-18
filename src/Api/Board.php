@@ -10,11 +10,23 @@ class Board
 {
     use RequestTrait;
 
-    /** @var  string $boardName  */
+    /**
+     * @var string $boardName
+     */
     private $boardName;
-    /** @var  array|mixed[] $boardInfo */
+
+    /**
+     * @var
+     * array|mixed[] $boardInfo
+     */
     private $boardInfo = [];
 
+    /**
+     * Board constructor
+     *
+     * @param string $boardName name of the board as found in the url
+     * @param bool $useSSL true for https, false for http
+     */
     public function __construct($boardName, $useSSL = true)
     {
         $this->boardName = $boardName;
@@ -25,7 +37,7 @@ class Board
     }
 
     /**
-     * This is automatically done when creating the boards through the getboards method on the FourChan class
+     * This is automatically done when creating the boards through the getBoards method on the FourChan class
      *
      * @param $boardInfo array with all the board info from the API
      */
@@ -36,6 +48,7 @@ class Board
 
     /**
      * Retrieves the full board info as given from the API, false if it was not set
+     *
      * @return array|mixed[]
      * @throws NotSetException if the board info hasn't been set through the API.
      */
@@ -54,11 +67,12 @@ class Board
      */
     public function getBoardName()
     {
-        return $this->boardName;
+        return (string) $this->boardName;
     }
 
     /**
      * Gets full board name as seen on the website, empty string if none set.
+     *
      * @return string
      * @throws NotSetException
      */
@@ -70,6 +84,11 @@ class Board
         return $this->boardInfo['title'];
     }
 
+    /**
+     * Get all active threads on the board
+     *
+     * @return array|Thread[]
+     */
     public function getThreads()
     {
         $response = $this->makeRequest('GET', 'threads.json');

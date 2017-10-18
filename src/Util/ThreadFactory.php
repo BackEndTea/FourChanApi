@@ -11,9 +11,10 @@ class ThreadFactory
 
     /**
      * ThreadFactory constructor.
+     *
      * @param array $threads array of threads as retrieved from API
-     * @param $board
-     * @param bool $useSSL True for Https, false for Http
+     * @param string $board name of the board as found in the url
+     * @param bool $useSSL true for https, false for http
      */
     public function __construct($threads, $board, $useSSL = true)
     {
@@ -21,6 +22,8 @@ class ThreadFactory
     }
 
     /**
+     * gets thread list
+     *
      * @return array|Thread[]
      */
     public function getThreads()
@@ -30,6 +33,7 @@ class ThreadFactory
 
     /**
      * Flattens thread structure and instantiates threads
+     *
      * @param $threads
      * @param $board
      * @param $useSSL

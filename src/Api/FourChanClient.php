@@ -9,9 +9,16 @@ class FourChanClient
 {
     use RequestTrait;
 
-    /** @var  Board */
+    /**
+     * @var Board $board
+     */
     private $board;
 
+    /**
+     * FourChanClient constructor
+     *
+     * @param bool $useSSL true for https, false for http
+     */
     public function __construct($useSSL = true)
     {
         $this->baseUrl = $useSSL ? 'https://a.4cdn.org/' : 'http://a.4cdn.org/';
@@ -22,10 +29,9 @@ class FourChanClient
 
 
     /**
-     * Sets the Board to be used and returns it.
+     * Sets the Board to be used and returns it
      *
-     * @param string $boardName The board name used in the url.
-     *  for example: a,b,v etc.
+     * @param string $boardName The board name used in the url, for example: a,b,v etc
      * @return Board
      */
     public function setBoard($boardName)
@@ -35,7 +41,7 @@ class FourChanClient
     }
 
     /**
-     * Board getter.
+     * Board getter
      *
      * @return Board
      */
