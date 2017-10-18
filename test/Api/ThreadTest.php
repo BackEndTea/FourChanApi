@@ -36,9 +36,9 @@ class ThreadTest extends \PHPUnit_Framework_TestCase
         $client->shouldReceive('request')->andReturn($client);
         $client->shouldReceive('getBody')->andReturn(file_get_contents('./test/single_thread_response.json'));
         $thread = new Thread('393603295', 'v');
-        $thread->setPosts([new Post(['no' => 'fake post id'])]);
+        $thread->setPosts([new Post(['no' => 5], 'v')]);
         $posts = $thread->getPosts();
         $this->assertInstanceOf(Post::class, $posts[0]);
-        $this->assertSame('fake post id', $posts[0]->getID());
+        $this->assertSame(5, $posts[0]->getID());
     }
 }
