@@ -66,10 +66,64 @@ class Thread
      * There is probably a use case for this
      *
      * @internal
-     * @param array $posts
+     * @param array|Post[] $posts
      */
     public function setPosts($posts)
     {
         $this->posts = $posts;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSticky()
+    {
+        return $this->isEntry('Sticky');
+    }
+
+    /**
+     * @return bool
+     */
+    public function isClosed()
+    {
+        return $this->isEntry('Closed');
+    }
+
+    /**
+     * @return bool
+     */
+    public function isArchived()
+    {
+        return $this->isEntry('Archived');
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubject()
+    {
+        return $this->getPosts(false)[0]->getSubject();
+    }
+
+    /**
+     * # of the OP, the one used in the URL
+     *
+     * @return int
+     */
+    public function getID()
+    {
+        return (int) $this->threadNo;
+    }
+
+
+    /**
+     * Helper function to grab info from the post object
+     *
+     * @param string $name name of the function, without 'is' to call. Needs to be properly capitalized
+     * @return mixed
+     */
+    private function isEntry($name)
+    {
+        return $this->getPosts(false)[0]->{'is'. $name}();
     }
 }

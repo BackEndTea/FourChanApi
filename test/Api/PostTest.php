@@ -192,6 +192,29 @@ class PostTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @test
+     */
+    public function getSubjectReturnAnEmptyStringWhenNoSubject()
+    {
+        $post = new Post($this->makePostWithNoImage(), 'v');
+
+        $this->assertSame('', $post->getSubject());
+    }
+
+    /**
+     * @test
+     */
+    public function getSubjectReturnsSubject()
+    {
+        $info = $this->makePostWithNoImage();
+        $info['sub'] = 'The Subject';
+
+        $post = new Post($info, 'v');
+
+        $this->assertSame('The Subject', $post->getSubject());
+    }
+
+    /**
      * Entry for a post with no image
      *
      * @return array

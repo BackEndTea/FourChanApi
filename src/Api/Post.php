@@ -119,6 +119,18 @@ class Post
     }
 
     /**
+     * @return string
+     */
+    public function getSubject()
+    {
+        if (isset($this->postInfo['sub'])) {
+            return $this->postInfo['sub'];
+        }
+        return '';
+    }
+
+
+    /**
      * True if post has an image, false if not
      *
      * @return bool
@@ -136,6 +148,6 @@ class Post
      */
     private function isEntry($toCheck)
     {
-        return isset($this->postInfo[$toCheck]) ? $this->postInfo[$toCheck] ===1 : false;
+        return isset($this->postInfo[$toCheck]) ? $this->postInfo[$toCheck] === 1 : false;
     }
 }
