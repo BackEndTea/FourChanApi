@@ -18,26 +18,64 @@ use FourChan\FourChan;
 FourChan::board('v')->getThreads();
 ````
 
-Get the image of the first thread OP on /a/
-
+Grab all the images of the first thread we find on /v/
 ```php
-FourChan::board('v')->getThreads()[0]->getPosts()[0]->getImageUrl();
+use FourChan\FourChan;
+
+$posts = FourChan::board('v')->getThreads()[0]->getPosts();
+
+foreach($posts as $post) {
+    if ($post->hasimage() {
+        echo $post->getImageUrl();
+    }
+}
 ```
 
-## Development
+Any function related to getting image information throws a ``` FourChan\Util\NoImageException``` when there is no image. So another way would be:
+```php
 
-This wrapper is still in development and currently not ready for use, if you wish to contribute check out [the contributing guide](CONTRIBUTING.md)
+$posts = FourChan::board('a')->getThreads()[0]->getPosts();
 
-Todo's:
+foreach($posts as $post) {
+    try{
+        echo $post->getImageUrl();
+    } catch(NoImageException $e) {
+        //do nothing
+    }
+}
+```
 
-* Get threads per page
-* Get catalog (thread + replies show on indexes)
-* Get Archived threads
-* Get thumbnails from an OP/post
+Get the information of a thread
+```php
+$thread = FourChan::board('a')->getThreads()[0];
+
+// true or false
+$thread->isStick();
+//true or false
+$thread->isClosed();
+//true or false
+$thread->isArchived();
+//Subject or '' if no subject is set.
+$thread->getSubject();
+//# of OP
+$thread->getID();
+```
+Get the information of a post
+```php
+$post = FourChan::board('a')->getThreads()[0]->getPosts()[0];
+//Comment of the post, including escaped html.
+$post->getFullComment();
+//# of the post
+$post->getID();
+
+```
+
+If you need more functionality, either make it yourself and shoot me a PR, or create an issue on [Github](https://github.com/BackEndTea/FourChanApi) and hope me or someone else does it for you.
+
+## Contributing
+
+Features, bug fixes etc are welcome, please check the [Contributing.md](CONTRIBUTING.md) for more info
 
 ## Note
 
-All of fake responses have been grabbed from live threads on 4chan, they do not necessarily represent my viewws, or of anyone who has worked on this project.
-
-
-
+All of fake responses have been grabbed from live threads on 4chan, they do not necessarily represent my views, or of anyone who has worked on this project.
