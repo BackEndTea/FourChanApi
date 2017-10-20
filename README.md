@@ -9,6 +9,10 @@ A PHP api wrapper for the 4chan api.
 
 Please see https://github.com/4chan/4chan-API for usage rules.
 
+## Instalation
+
+Run ```composer require backendtea/fourchanapi ^1.0``` For information about Composer check out their [website](https://getcomposer.org/)
+
 ## Usage
 
 Get a list off all the Thread #'s of /v/
